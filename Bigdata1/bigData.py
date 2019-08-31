@@ -21,4 +21,6 @@ print('hello bigData')
             b. BLOB
             c. MEDIUMBLOB
             d. LONGBLOB
+      5. How to handle Streamed data
+      6. Real time messaging
 """
