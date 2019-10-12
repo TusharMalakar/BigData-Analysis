@@ -3,7 +3,7 @@ from datetime import date
 print('hello bigData')
 
 """
-    1.Dockerize all the file
+    1.Dockerize and Maven all the file
     2.Add mySQL dataBase 
     3.Extract data using query
     4. Insert / Retrieve file 
@@ -21,4 +21,6 @@ print('hello bigData')
             b. BLOB
             c. MEDIUMBLOB
             d. LONGBLOB
+      5. How to handle Streamed data
+      6. Real time messaging
 """
