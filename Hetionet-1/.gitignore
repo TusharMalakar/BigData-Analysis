@@ -6,7 +6,7 @@
 .vscode
 .idea
 .log
-.tsv
+*.tsv
 
 #ignore by .extension
 .iml
