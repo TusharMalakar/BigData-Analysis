@@ -14,5 +14,4 @@
 #Dockerfile
 
 #ignore by a folder name
-Hetionet-1/resources/projectI_hetionet/edges.tsv
-Hetionet-1/resources/projectI_hetionet/nodes.tsv
+r"Hetionet-1/resources/projectI_hetionet/"
