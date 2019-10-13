@@ -33,22 +33,26 @@ with open(r'resources\projectI_hetionet\nodes.tsv')as tsvfile:
             line = next(tsvreader)
 
             if "Anatomy" in line:
-                createAnatomy_node = "CREATE  ( node : Anatomy {{ id : {id},  name : {name} }})".format(id=line[0], name=line[1])
+                createAnatomy_node = "CREATE  ( node : Anatomy {{ id : {id},  name : {name} }})".format(id=line[0],
+                                                                                                        name=line[1])
                 print(createAnatomy_node)
                 # execute_query(createAnatomy_node)
 
             if "Compound" in line:
-                createCompound_node = "CREATE  ( node : Compound {{ id : {id},  name : {name} }})".format(id=line[0], name=line[1])
+                createCompound_node = "CREATE  ( node : Compound {{ id : {id},  name : {name} }})".format(id=line[0],
+                                                                                                          name=line[1])
                 print(createCompound_node)
                 # execute_query(createCompound_node)
 
             if "Disease" in line:
-                createDisease_node = "CREATE  ( node : Disease {{ id : {id},  name : {name} }})".format(id=line[0], name=line[1])
+                createDisease_node = "CREATE  ( node : Disease {{ id : {id},  name : {name} }})".format(id=line[0],
+                                                                                                        name=line[1])
                 print(createDisease_node)
                 # execute_query(createDisease_node)
 
             if"Gene" in line:
-                createGene_node = "CREATE  ( node : Gene {{ id : {id},  name : {name} }})".format(id=line[0], name=line[1])
+                createGene_node = "CREATE  ( node : Gene {{ id : {id},  name : {name} }})".format(id=line[0],
+                                                                                                  name=line[1])
                 print(createGene_node)
                 # execute_query(createGene_node)
 
