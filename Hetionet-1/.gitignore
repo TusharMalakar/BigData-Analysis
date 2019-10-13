@@ -14,4 +14,4 @@
 #Dockerfile
 
 #ignore by a folder name
-resources\projectI_hetionet\
+*projectI_hetionet
