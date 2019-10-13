@@ -1,0 +1,19 @@
+*.pc
+*.pyc
+*.pyo
+*.pyc
+*__pycache__
+.vscode
+.idea
+.log
+
+#ignore by .extension
+.iml
+
+#ignore by a filename
+#Dockerfile
+
+#ignore by a folder name
+resources/projectI_hetionet/
+__pycache__/
+
