@@ -25,11 +25,10 @@ with open(r'projectI_hetionet\nodes.tsv')as tsvfile:
 
 
 
-
 # Database Credentials
 uri="bolt://localhost:7687"
 userName="neo4j"
-password="Krishcu12@"
+password="GraphPass"
 
 graph_driver = GraphDatabase.driver(uri, auth=(userName, password))
 
@@ -41,23 +40,23 @@ cqlNodeQuery="MATCH (x:university) RETURN x"
 cqlEdgeQuery="MATCH (x:university {name:'Yale University'})-[r]->(y:university) RETURN y.name,r.miles"
 
 # CQL to create a graph containing some of the Ivy League universities
-cqlCreate = """CREATE (cornell:university { name: "Cornell University"}),
-                            (yale:university { name: "Yale University"}),
-                            (princeton:university { name: "Princeton University"}),
-                            (harvard:university { name: "Harvard University"}),
-                            (cornell)-[:connects_in {miles: 259}]->(yale),
-                            (cornell)-[:connects_in {miles: 210}]->(princeton),
-                            (cornell)-[:connects_in {miles: 327}]->(harvard),
-                            (yale)-[:connects_in {miles: 259}]->(cornell),
-                            (yale)-[:connects_in {miles: 133}]->(princeton),
-                            (yale)-[:connects_in {miles: 133}]->(harvard),
-                            (harvard)-[:connects_in {miles: 327}]->(cornell),
-                            (harvard)-[:connects_in {miles: 133}]->(yale),
-                            (harvard)-[:connects_in {miles: 260}]->(princeton),
-                            (princeton)-[:connects_in {miles: 210}]->(cornell),
-                            (princeton)-[:connects_in {miles: 133}]->(yale),
-                            (princeton)-[:connects_in {miles: 260}]->(harvard)"""
-
+cqlCreate = """CREATE   (cornell:university { name: "Cornell University"}),
+                        (yale:university { name: "Yale University"}),
+                        (princeton:university { name: "Princeton University"}),
+                        (harvard:university { name: "Harvard University"}),
+                        
+                        (cornell)-[:connects_in {miles: 259}]->(yale),
+                        (cornell)-[:connects_in {miles: 210}]->(princeton),
+                        (cornell)-[:connects_in {miles: 327}]->(harvard),
+                        (yale)-[:connects_in {miles: 259}]->(cornell),
+                        (yale)-[:connects_in {miles: 133}]->(princeton),
+                        (yale)-[:connects_in {miles: 133}]->(harvard),
+                        (harvard)-[:connects_in {miles: 327}]->(cornell),
+                        (harvard)-[:connects_in {miles: 133}]->(yale),
+                        (harvard)-[:connects_in {miles: 260}]->(princeton),
+                        (princeton)-[:connects_in {miles: 210}]->(cornell),
+                        (princeton)-[:connects_in {miles: 133}]->(yale),
+                        (princeton)-[:connects_in {miles: 260}]->(harvard)"""
 
 
 # Execute the CQL query
@@ -73,7 +72,7 @@ with graph_driver.session() as graphDB_Session:
 
     # Query the relationships present in the graph
     nodes = graphDB_Session.run(cqlEdgeQuery)
-    print("Distance from Yale University to the other Ivy League universities present in the graph:")
+    print("\nDistance from Yale University to the other Ivy League universities present in the graph:")
 
     for node in nodes:
         print(node)
