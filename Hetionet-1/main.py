@@ -1,4 +1,6 @@
 import csv
+import tarfile
+
 from neo4j import GraphDatabase
 
 # Database Credentials
@@ -6,6 +8,11 @@ uri="bolt://localhost:7687"
 userName="neo4j"
 password="GraphPass"
 graph_driver = GraphDatabase.driver(uri, auth=(userName, password))
+
+
+# open tar files
+tarfile_list = tarfile.open(r"data\projectI_hetionet.tar.gz")
+file_list = tarfile_list.extractall()
 
 
 # implement insert query
