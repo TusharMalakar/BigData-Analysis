@@ -37,22 +37,22 @@ with open(r'resources\projectI_hetionet\nodes.tsv')as tsvfile:
             2. inserting queries in noo4j graph DB
             """
             if "Anatomy" in line:
-                createAnatomy_node = f"""CREATE   ( Anatomy : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]} }})"""
+                createAnatomy_node = f"""CREATE   ( Anatomy : node {{ id : "{line[0]}",  name : {line[1]}, kind : {line[2]} }})"""
                 print(createAnatomy_node)
                 # execute_query(createAnatomy_node)
 
             if "Compound" in line:
-                createCompound_node = f"""CREATE  ( Compound : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
+                createCompound_node = f"""CREATE  ( Compound : node {{ id : "{line[0]}",  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createCompound_node)
                 # execute_query(createCompound_node)
 
             if "Disease" in line:
-                createDisease_node = f"""CREATE  ( Disease : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
+                createDisease_node = f"""CREATE  ( Disease : node {{ id : "{line[0]}",  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createDisease_node)
                 # execute_query(createDisease_node)
 
             if"Gene" in line:
-                createGene_node = f"""CREATE  ( Gene : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
+                createGene_node = f"""CREATE  ( Gene : node {{ id : "{line[0]}",  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createGene_node)
                 # execute_query(createGene_node)
 
