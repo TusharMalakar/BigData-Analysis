@@ -33,7 +33,8 @@ with open(r'resources\projectI_hetionet\nodes.tsv')as tsvfile:
             line = next(tsvreader)
 
             """
-            creating queries as f_stream
+            1. creating queries as f_stream.
+            2. inserting queries in noo4j graph DB
             """
             if "Anatomy" in line:
                 createAnatomy_node = f"""CREATE   ( Anatomy : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]} }})"""
