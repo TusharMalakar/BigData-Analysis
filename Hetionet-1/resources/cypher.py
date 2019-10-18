@@ -48,9 +48,11 @@ cqlCreate = """CREATE   (cornell:university { name: "Cornell University"}),
                         (cornell)-[:connects_in {miles: 259}]->(yale),
                         (cornell)-[:connects_in {miles: 210}]->(princeton),
                         (cornell)-[:connects_in {miles: 327}]->(harvard),
+                        
                         (yale)-[:connects_in {miles: 259}]->(cornell),
                         (yale)-[:connects_in {miles: 133}]->(princeton),
                         (yale)-[:connects_in {miles: 133}]->(harvard),
+                        
                         (harvard)-[:connects_in {miles: 327}]->(cornell),
                         (harvard)-[:connects_in {miles: 133}]->(yale),
                         (harvard)-[:connects_in {miles: 260}]->(princeton),

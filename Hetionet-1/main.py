@@ -1,6 +1,4 @@
 import csv
-import tarfile
-
 from neo4j import GraphDatabase
 
 # Database Credentials
@@ -8,11 +6,6 @@ uri="bolt://localhost:7687"
 userName="neo4j"
 password="GraphPass"
 graph_driver = GraphDatabase.driver(uri, auth=(userName, password))
-
-
-# open tar files
-tarfile_list = tarfile.open(r"data\projectI_hetionet.tar.gz")
-file_list = tarfile_list.extractall()
 
 
 # implement insert query
@@ -39,27 +32,26 @@ with open(r'resources\projectI_hetionet\nodes.tsv')as tsvfile:
             # header
             line = next(tsvreader)
 
+            """
+            creating queries as f_stream
+            """
             if "Anatomy" in line:
-                createAnatomy_node = "CREATE  ( node : Anatomy {{ id : {id},  name : {name} }})".format(id=line[0],
-                                                                                                        name=line[1])
+                createAnatomy_node = f"""CREATE   ( Anatomy : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]} }})"""
                 print(createAnatomy_node)
                 # execute_query(createAnatomy_node)
 
             if "Compound" in line:
-                createCompound_node = "CREATE  ( node : Compound {{ id : {id},  name : {name} }})".format(id=line[0],
-                                                                                                          name=line[1])
+                createCompound_node = f"""CREATE  ( Compound : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createCompound_node)
                 # execute_query(createCompound_node)
 
             if "Disease" in line:
-                createDisease_node = "CREATE  ( node : Disease {{ id : {id},  name : {name} }})".format(id=line[0],
-                                                                                                        name=line[1])
+                createDisease_node = f"""CREATE  ( Disease : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createDisease_node)
                 # execute_query(createDisease_node)
 
             if"Gene" in line:
-                createGene_node = "CREATE  ( node : Gene {{ id : {id},  name : {name} }})".format(id=line[0],
-                                                                                                  name=line[1])
+                createGene_node = f"""CREATE  ( Gene : node {{ id : {line[0]},  name : {line[1]}, kind : {line[2]}  }})"""
                 print(createGene_node)
                 # execute_query(createGene_node)
 
