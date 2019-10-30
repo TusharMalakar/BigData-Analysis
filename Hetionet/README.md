@@ -20,10 +20,10 @@
         - source, metaedge and target are required
         - http://127.0.0.1:5000/add_edges?source=nodesource&metaedge=nodemetaedge&target=nodetarget
     
-    5. insert all nodes:
+    5. insert all nodes from node.tsv:
         - http://127.0.0.1:5000/insert_all_nodes
     
-    6. insert all edges:
+    6. insert all edges form edge.tsv:
         - http://127.0.0.1:5000/insert_all_edges
     
         
