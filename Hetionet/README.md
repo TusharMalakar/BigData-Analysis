@@ -1,4 +1,4 @@
-# Hetionet : Integrating Biology into a Public Neo4j Database
+# Hetionet : Integrating Biology into a Public Neo4j and Cassandra Database
 
 # It is python - flask app with Apache Cassandra Database and Neo4j Graph database:
     1. type: cmd run the project:
