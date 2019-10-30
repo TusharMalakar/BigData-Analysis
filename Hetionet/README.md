@@ -1,7 +1,7 @@
 # Hetionet : Integrating Biology into a Public Neo4j and Cassandra Database
 
 # It is python - flask app with Apache Cassandra Database and Neo4j Graph database:
-    1. type: cmd run the project:
+    1. Use: cmd to run the project:
         - python main.py
         
     2. find a relationship by "disease_name"
