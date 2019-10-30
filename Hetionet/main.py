@@ -48,19 +48,19 @@ def find_ralation():
         records = find_query(edges_query)
         records0 = find_query(edges_query0)
 
-        To = ""
+        source = ""
         for record in records:
-            To = record['a']['name']
-            print(To, " resembles ", record['A']['name'])
-            print(To, " localizes ", record['b']['name'])
-            print(To, " up-regulates ", record['e']['name'])
-            print(To, " down-regulates ", record['c']['name'])
-            print(To, " express ", record['d']['name'])
+            source = record['a']['name']
+            print(source, " resembles ", record['A']['name'])
+            print(source, " localizes ", record['b']['name'])
+            print(source, " up-regulates ", record['e']['name'])
+            print(source, " down-regulates ", record['c']['name'])
+            print(source, " express ", record['d']['name'])
 
         for record0 in records0:
-            print(To, " up-regulates ", record0['i']['name'])
-            print(To, " associates ", record0['j']['name'])
-            print(To, " down-regulates ", record0['k']['name'])
+            print(source, " up-regulates ", record0['i']['name'])
+            print(source, " associates ", record0['j']['name'])
+            print(source, " down-regulates ", record0['k']['name'])
 
 
         return json.dumps({"success": True})

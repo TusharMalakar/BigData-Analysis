@@ -9,7 +9,7 @@
     1. Use: cmd to run the project:
         - python main.py
         
-    2. find a relationship by "disease_name"
+    2. find a relationship by "disease_name" 
         - http://127.0.0.1:5000/disease?name=disese_name
         
     3. add a new node:
