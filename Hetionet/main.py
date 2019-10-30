@@ -1,5 +1,7 @@
 import os, json
 from flask import Flask, request
+from resources.nodes import insert_all_nodes
+from resources.edges import insert_all_edges
 from Neo4j.query import (find_query, insert_query)
 
 app = Flask(__name__)
@@ -88,7 +90,7 @@ def add_node():
 
 
 
-@app.route("/add_edges", methods=['POST'])
+@app.route("/add_edges", methods=['GET'])
 def add_edges():
     """
     http://127.0.0.1:5000/add_edges?source=nodesource&metaedge=nodemetaedge&target=nodetarget
@@ -106,6 +108,26 @@ def add_edges():
                    RETURN dummy1, dummy2 """
     insert_query(new_edge)
     return json.dumps({"success": True})
+
+
+@app.route("/insert_all_nodes", methods=['GET'])
+def insert_all_nodes():
+    """
+    http://127.0.0.1:5000/insert_all_nodes
+    """
+    insert_all_nodes()
+    return json.dumps({"success": True})
+
+
+
+@app.route("/insert_all_edges", methods=['GET'])
+def insert_all_edges():
+    """
+    http://127.0.0.1:5000/insert_all_edges
+    """
+    insert_all_edges()
+    return json.dumps({"success": True})
+
 
 
 if __name__ == "__main__":
