@@ -1,6 +1,6 @@
 # Hetionet : Integrating Biology into a Public Neo4j Database
 
-# It is python - flask app with Cassandra NoSQL and Neo4j NoSQL Graph databse:
+# It is python - flask app with Apache Cassandra Database and Neo4j Graph database:
     1. type: cmd run the project:
         - python main.py
         
