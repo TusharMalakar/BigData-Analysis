@@ -37,31 +37,31 @@ def find_ralation():
         prefix = """MATCH (a:Disease { name :\""""
         prefix = prefix + name
         postfix = """\"})-[:DrD]->(A:Disease), 
-                        (A) -[r:DlA]->(b:Anatomy) -[:AdG]->(c:Gene), (b)-[:AeG]->(d:Gene),(b)-[:AuG]->(e:Gene) 
+                        (a) -[r:DlA]->(b:Anatomy) -[:AdG]->(c:Gene),
+                        (b)-[:AeG]->(d:Gene),(b)-[:AuG]->(e:Gene) 
                         RETURN A, a, b, c, d, e limit 1"""
 
         postfix0 = """\"})-[:DuG]->(i:Gene), (a)-[:DaG]->(j:Gene), (a)-[:DdG]->(k:Gene)
                         RETURN i, j, k limit 1"""
         edges_query = prefix + postfix
         edges_query0 = prefix + postfix0
+        print(edges_query0)
 
         records = find_query(edges_query)
         records0 = find_query(edges_query0)
 
-        source = ""
         for record in records:
-            source = record['a']['name']
-            print(source, " resembles ", record['A']['name'])
-            print(source, " localizes ", record['b']['name'])
-            print(source, " up-regulates ", record['e']['name'])
-            print(source, " down-regulates ", record['c']['name'])
-            print(source, " express ", record['d']['name'])
+            print(record['a']['name'], " resembles ", record['A']['name'])
+            print(record['a']['name'], " localizes ", record['b']['name'])
+            print(record['b']['name'], " down-regulates ", record['c']['name'])
+            print(record['b']['name'], " express ", record['d']['name'])
+            print(record['b']['name'], " up-regulates ", record['e']['name'])
+            treat = """SELECT """
 
         for record0 in records0:
-            print(source, " up-regulates ", record0['i']['name'])
-            print(source, " associates ", record0['j']['name'])
-            print(source, " down-regulates ", record0['k']['name'])
-
+            print(record['a']['name'], " up-regulates ", record0['i']['name'])
+            print(record['a']['name'], " associates ", record0['j']['name'])
+            print(record['a']['name'], " down-regulates ", record0['k']['name'])
 
         return json.dumps({"success": True})
 

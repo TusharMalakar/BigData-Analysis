@@ -39,29 +39,29 @@ def insert_all_nodes():
 
 
 
-with open(r'projectI_hetionet\nodes.tsv')as tsvfile:
-        tsvreader = csv.reader(tsvfile, delimiter="\t")
-        tsv_headings = next(tsvreader)
-        for line in tsvreader:
-            aline = aline + 1
-            # if "Anatomy" in line :
-            #    a_query = f"""insert into hetionet.anatomy1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
-            #    print(a_query)
-            #    cqlsh(a_query)
-            #
-            # if "Compound" in line :
-            #     c_query = f"""insert into hetionet.compound1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
-            #     print(c_query)
-            #     cqlsh(c_query)
-            #
-            # if "Disease" in line :
-            #     d_query = f"""insert into hetionet.disease1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
-            #     print(d_query)
-            #     cqlsh(d_query)
-            #
-            # if"Gene" in line :
-            #     q_query = f"""insert into hetionet.gene1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
-            #     print(q_query)
-            #     cqlsh(q_query)
-
-        print("Numbers of nodes => ", aline, "\nNodes inserted successfully!")
+# with open(r'projectI_hetionet\nodes.tsv')as tsvfile:
+#         tsvreader = csv.reader(tsvfile, delimiter="\t")
+#         tsv_headings = next(tsvreader)
+#         for line in tsvreader:
+#             aline = aline + 1
+#             # if "Anatomy" in line :
+#             #    a_query = f"""insert into hetionet.anatomy1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
+#             #    print(a_query)
+#             #    cqlsh(a_query)
+#             #
+#             # if "Compound" in line :
+#             #     c_query = f"""insert into hetionet.compound1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
+#             #     print(c_query)
+#             #     cqlsh(c_query)
+#             #
+#             # if "Disease" in line :
+#             #     d_query = f"""insert into hetionet.disease1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
+#             #     print(d_query)
+#             #     cqlsh(d_query)
+#             #
+#             # if"Gene" in line :
+#             #     q_query = f"""insert into hetionet.gene1(id, kind, name) values( '{line[0]}' , '{line[1]}' , '{line[2]}');"""
+#             #     print(q_query)
+#             #     cqlsh(q_query)
+#
+#         print("Numbers of nodes => ", aline, "\nNodes inserted successfully!")
