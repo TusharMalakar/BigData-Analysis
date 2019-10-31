@@ -19,19 +19,22 @@
         
     2. find a relationship by "disease_name" 
         - http://127.0.0.1:5000/disease?name=disese_name
+     
+    3. find treats of a disease by disease_id:
+        - http://127.0.0.1:5000/d_id?id=Disease::DOID:0050741e
         
-    3. add a new node:
+    4. add a new node:
         - id, name and kind are required to create new node
         - http://127.0.0.1:5000/add_node?id=nodeID&name=nodeName&kind=nodekind
         
-    4. add a new edge:
+    5. add a new edge:
         - source, metaedge and target are required
         - http://127.0.0.1:5000/add_edges?source=nodesource&metaedge=nodemetaedge&target=nodetarget
     
-    5. insert all nodes from node.tsv:
+    7. insert all nodes from node.tsv:
         - http://127.0.0.1:5000/insert_all_nodes
     
-    6. insert all edges form edge.tsv:
+    8. insert all edges form edge.tsv:
         - http://127.0.0.1:5000/insert_all_edges
     
         

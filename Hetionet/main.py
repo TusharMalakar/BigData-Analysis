@@ -127,6 +127,40 @@ def insert_all_edges():
     return json.dumps({"success": True})
 
 
+@app.route("/d_id", methods=['GET'])
+def find_ralation_and_treat_by_id():
+    """
+     http://127.0.0.1:5000/d_id?id=Disease::DOID:0050741e
+     """
+    name = request.args.get("id")
+    if not name:
+        return json.dumps({"error": "Disease name not provided"})
+    try:
+        prefix = """MATCH (a:Compound)-[:CtD]->(A:Disease{ id :\""""
+        prefix = prefix + name
+        postfix = """\"}),(p:Compound)-[:CtD]->(A)-[:DlA]->(l:Anatomy)-[:AdG]->(d:Gene),
+                       (l)-[:AeG]->(e:Gene), (l)-[:AuG]->(u:Gene)  RETURN A, a, p,
+                        l, d,e, u limit 2"""
+
+        edges_query = prefix + postfix
+        records = find_query(edges_query)
+
+        for record in records:
+            print("Disease name is ", record['A']['name'])
+            print(record['p']['name'], " treats ", record['A']['name'])
+            print(record['A']['name'], " localize ", record['l']['name'])
+            print(record['A']['name'], " down-regulates ", record['d']['name'])
+            print(record['l']['name'], " express ", record['e']['name'])
+            print(record['l']['name'], " up-regulates ", record['u']['name'])
+            print("---------------------------------------------------------")
+
+        return json.dumps({"success": True})
+
+    except Exception as e:
+        print(e)
+        return json.dumps({"error": "Exception found"})
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
