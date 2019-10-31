@@ -45,7 +45,6 @@ def find_ralation():
                         RETURN i, j, k limit 1"""
         edges_query = prefix + postfix
         edges_query0 = prefix + postfix0
-        print(edges_query0)
 
         records = find_query(edges_query)
         records0 = find_query(edges_query0)
@@ -56,7 +55,6 @@ def find_ralation():
             print(record['b']['name'], " down-regulates ", record['c']['name'])
             print(record['b']['name'], " express ", record['d']['name'])
             print(record['b']['name'], " up-regulates ", record['e']['name'])
-            treat = """SELECT """
 
         for record0 in records0:
             print(record['a']['name'], " up-regulates ", record0['i']['name'])
