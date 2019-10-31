@@ -5,6 +5,14 @@
 ![Capture](https://user-images.githubusercontent.com/35859780/67838071-e2613200-fac6-11e9-840e-001d598e88ed.PNG)
 
 
+
+
+1. start your Cassandra database:
+- cassandra.bat -f
+- cqlsh 
+2. start your Neo4j database
+- neo4j using desktop application 
+
 # It is python - flask app with Apache Cassandra Database and Neo4j Graph database:
     1. Use: cmd to run the project:
         - python main.py
