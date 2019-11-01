@@ -28,10 +28,7 @@ Note:
 2. start your Neo4j database
 - neo4j using desktop application
 
-Neo4j:
-Node model:
- 
-Edges model: 
+
  
 Neo4j:
 # It is python - flask app with Apache Cassandra Database and Neo4j Graph database:
