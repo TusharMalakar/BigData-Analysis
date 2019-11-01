@@ -39,43 +39,43 @@ Neo4j:
 
 2. find a relationship by "disease_name" 
     - http://127.0.0.1:5000/disease?name=disese_name
-    Return:
-        alcohol dependence resembles bipolar disorder
-        alcohol dependence localizes blood
-        blood down-regulates SETD7
-        blood express HACD3
-        blood up-regulates CLECL1
-        alcohol dependence up-regulates ARHGAP4
-        alcohol dependence associates DRD2
-        alcohol dependence down-regulates NDUFB7
+    - Return:
+        - alcohol dependence resembles bipolar disorder
+        - alcohol dependence localizes blood
+        - blood down-regulates SETD7
+        - blood express HACD3
+        - blood up-regulates CLECL1
+        - alcohol dependence up-regulates ARHGAP4
+        - alcohol dependence associates DRD2
+        - alcohol dependence down-regulates NDUFB7
 
 3. find treats of a disease by disease_id:
 # MATCH p= (c:Compound)-[:CtD]->(d:Disease{id:"Disease::DOID:0050741"})-->()-->()-->()->() RETURN p LIMIT 2
    - http://127.0.0.1:5000/d_id?id=Disease::DOID:0050741e
-	Return: 
-            Disease name is alcohol dependence
-            Acamprosate treats alcohol dependence
-            alcohol dependence localize blood
-            alcohol dependence down-regulates SETD7
-            blood express HACD3
-            blood up-regulates CLECL1
+	- Return: 
+        - Disease name is alcohol dependence
+        - Acamprosate treats alcohol dependence
+        - alcohol dependence localize blood
+        - alcohol dependence down-regulates SETD7
+        - blood express HACD3
+        - blood up-regulates CLECL1
         
 4. add a new node:
     - id, name and kind are required to create new node
     - http://127.0.0.1:5000/add_node?id=nodeID&name=nodeName&kind=nodekind
-    Return: Success status
+    - Return: Success status
 5. add a new edge:
     - source, metaedge and target are required
   - http://127.0.0.1:5000/add_edges?source=nodesource&metaedge=nodemetaedge&target=nodetarget    
-        Return: Success status
+       - Return: Success status
    
  7. insert all nodes from node.tsv:
-        - http://127.0.0.1:5000/insert_all_nodes
-	        Return: Success status
+    - http://127.0.0.1:5000/insert_all_nodes
+    - Return: Success status
 
 8. insert all edges form edge.tsv:
     - http://127.0.0.1:5000/insert_all_edges
-        Return: Success status
+    - Return: Success status
 
 
 
