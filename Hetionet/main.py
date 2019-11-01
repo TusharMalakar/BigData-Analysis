@@ -141,10 +141,9 @@ def find_ralation_and_treat_by_id():
         postfix = """\"}),(p:Compound)-[:CtD]->(A)-[:DlA]->(l:Anatomy)-[:AdG]->(d:Gene),
                        (l)-[:AeG]->(e:Gene), (l)-[:AuG]->(u:Gene)  RETURN A, a, p,
                         l, d,e, u limit 2"""
-
         edges_query = prefix + postfix
+        print(edges_query)
         records = find_query(edges_query)
-
         for record in records:
             print("Disease name is ", record['A']['name'])
             print(record['p']['name'], " treats ", record['A']['name'])
