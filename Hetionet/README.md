@@ -1,5 +1,7 @@
 # Hetionet : Integrating Biology into a Public Neo4j and Cassandra Database
 
+# Extract "projectI_hetionet.tar.tz" file running "Tarfile.py"
+
 ![Capture](https://user-images.githubusercontent.com/35859780/67837968-ab8b1c00-fac6-11e9-8aab-db8b4a62a079.PNG)
 
 ![Capture](https://user-images.githubusercontent.com/35859780/67838071-e2613200-fac6-11e9-840e-001d598e88ed.PNG)
