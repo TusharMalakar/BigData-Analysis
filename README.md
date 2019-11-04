@@ -1,5 +1,6 @@
 # Machine-learning-using-BigData
 
+# Neo4J:
 1. Hetionet : Integrating Biology into a Public Neo4j Database
 
 Cypher Commands : 
@@ -20,6 +21,20 @@ Cypher Commands :
         
 5. Delete all relationship of a node: 
     - f"""MATCH ()-[r:"relationshipName"]-() delete r
+ 
+# Cassandra:
+
+    
+    
+# Hadoop:
+1. hdfs namenode -formate
+2. start-all.cmd
+3. resource-manager: all map-reduce programs that are executed in the system
+	http://localhost:8088/cluster
+4. namenode UI:
+	http://localhost:50070/dfshealth.html#tab-overview
+5. copy file to hadoop directory:
+	hadoop fs -mkdir "filename" 
         
         
         
