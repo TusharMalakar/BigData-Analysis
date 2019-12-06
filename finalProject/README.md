@@ -4,3 +4,14 @@
     - insert in hdfs
 - Query from the HDFS get the related doc (document) similarity
     - OUTPUT list of similar doc (document)  
+
+
+# Hadoop Window CMD
+1. hdfs namenode -formate
+2. start-all.cmd
+3. resource-manager: all map-reduce programs that are executed in the system
+	http://localhost:8088/cluster
+4. namenode UI:
+	http://localhost:50070/dfshealth.html#tab-overview
+5. copy file to hadoop directory:
+	hadoop fs -mkdir "filename"
