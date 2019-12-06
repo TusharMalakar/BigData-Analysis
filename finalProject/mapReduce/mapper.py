@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """A more advanced Mapper, using Python iterators and generators."""
-
 import sys
+
 
 def read_input(file):
     for line in file:
@@ -19,7 +19,7 @@ def main(separator='\t'):
         #
         # tab-delimited; the trivial word count is 1
         for word in words:
-            print (word, separator, 1)
+            print(word, separator, 1)
 
 
 if __name__ == "__main__":
