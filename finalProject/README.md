@@ -1,3 +1,6 @@
+# My HADOOP:
+   - C:\hadoop\sbin
+   
 # Implement using cloud platform 100+20
 - input is file: (insert file)
     - filter the file, keeping disease and name
