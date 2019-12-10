@@ -1,6 +1,6 @@
 # My HADOOP:
    - C:\hadoop\sbin
-
+   - window host: c:\Windows\System32\Drivers\etc\hosts
 # Hadoop Window CMD
 1. hdfs namenode -formate
 2. start-all.cmd
