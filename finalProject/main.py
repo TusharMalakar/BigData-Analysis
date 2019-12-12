@@ -18,8 +18,8 @@ def filter_document(document):
 
 
 def print_matrix(matrix):
-   for pp in matrix:
-      print(pp, "\n")
+   for row in matrix:
+      print(row, "\n")
 
 
 if __name__ == "__main__":
