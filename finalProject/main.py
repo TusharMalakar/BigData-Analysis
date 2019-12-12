@@ -1,3 +1,5 @@
+from collections import Counter
+
 
 def make_matrix(project2_test):
    """
@@ -38,14 +40,14 @@ def print_matrix(matrix):
 def tf(document):
    """
    :param document:
-   :return: tf
+   :return: tf of individual document
    """
-   for word in document:
-      if 'gene' in word:
-         print(word)
-      if 'dis' in word:
-         print(word)
-   pass
+   counter = Counter(document)
+   doc_frequency = counter.most_common(len(document))
+   freq_table = []
+   for doc in doc_frequency:
+      freq_table.append((doc[0], doc[1]/len(document)))
+   return freq_table
 
 
 def tf_idf():
@@ -64,8 +66,8 @@ def semantic_similarity():
 
 if __name__ == "__main__":
    matrix = make_matrix("project2_test.txt")
-   # print_matrix(matrix)
-   tf(matrix[0])
+   for term in matrix:
+      print(tf(term))  # for  individual document
 
 
 
