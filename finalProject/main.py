@@ -1,13 +1,13 @@
 
-def makeMatrix(project2_test):
+def make_matrix(project2_test):
    with open(project2_test, 'r') as file:
        columns = []
        for document in file.readlines():
-          columns.append(filterDocument(document))
+          columns.append(filter_document(document))
        return columns
 
 
-def filterDocument(document):
+def filter_document(document):
    row = []
    for term in document.split():
       if document.split()[0] not in row:
@@ -23,8 +23,9 @@ def print_matrix(matrix):
 
 
 if __name__ == "__main__":
-   matrix = makeMatrix("project2_test.txt")
+   matrix = make_matrix("project2_test.txt")
    print_matrix(matrix)
+
 
 
 
