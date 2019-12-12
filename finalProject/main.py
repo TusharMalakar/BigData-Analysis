@@ -52,6 +52,7 @@ def tf(document):
    return freq_table
 
 
+
 def all_terms(matrix):
    """
    :param matrix:
@@ -78,7 +79,8 @@ def tf_idf(matrix):
       if term in doc:
          count_doc += 1
          idf.append((term, math.log(numbers_of_documents / count_doc)))
-   print(idf)
+   for i_idf in idf:
+      print(i_idf[1], i_idf[1], i_idf[1])
    return idf
 
 
@@ -92,9 +94,6 @@ def semantic_similarity():
 if __name__ == "__main__":
    matrix = make_matrix("project2_test.txt")
    tf_idf(matrix)
-
-
-
    # for term in matrix:
    #    print(tf(term))  # for  individual document
 
