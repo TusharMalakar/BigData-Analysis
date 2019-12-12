@@ -1,26 +1,31 @@
 
-docList = []
-with open("project2_test.txt", 'r') as file:
-    for document in file.readlines():
-        for word in document.split():
-            if document.split()[0] not in docList:
-                docList.append(document.split()[0])
-            if word.startswith('gene') and word.endswith('gene') or word.startswith('dis') and word.endswith('dis'):
-                docList.append(word)
+def makeMatrix(project2_test):
+   with open(project2_test, 'r') as file:
+       columns = []
+       for document in file.readlines():
+          columns.append(filterDocument(document))
+       return columns
 
-# print(docList)
-numDoc = []
-for ascii in docList:
-   if 57 >= ord(ascii[0]) >= 48:
-      numDoc.append(ord(ascii[0]))
 
-matrix = []
-for i in range(len(numDoc)):
+def filterDocument(document):
    row = []
-   for j, tr in zip(range(20), docList):
-      if ord(tr[0]) <=47 or ord(tr[0]) >= 58:
-         row.append(tr)
-   matrix.append(row)
-print(matrix)
+   for term in document.split():
+      if document.split()[0] not in row:
+         row.append(document.split()[0])
+      if term.startswith('gene') and term.endswith('gene') or term.startswith('dis') and term.endswith('dis'):
+         row.append(term)
+   return row
+
+
+def print_matrix(matrix):
+   for pp in matrix:
+      print(pp, "\n")
+
+
+if __name__ == "__main__":
+   matrix = makeMatrix("project2_test.txt")
+   print_matrix(matrix)
+
+
 
 
