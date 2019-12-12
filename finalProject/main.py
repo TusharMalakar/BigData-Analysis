@@ -1,3 +1,4 @@
+import math
 from collections import Counter
 
 
@@ -39,6 +40,7 @@ def print_matrix(matrix):
 
 def tf(document):
    """
+   number_of_times_term_in_document / len(document)
    :param document:
    :return: tf of individual document
    """
@@ -50,11 +52,34 @@ def tf(document):
    return freq_table
 
 
-def tf_idf():
+def all_terms(matrix):
    """
+   :param matrix:
+   :return: all terms from all documents
+   """
+   all_terms = []
+   for row in matrix:
+      for doc in row:
+         if doc not in all_terms:
+            all_terms.append(doc)
+   return all_terms
+
+
+
+def tf_idf(matrix):
+   """
+   log(number_of_documents / number_of_times_term_exist_in_all_documents)
+   :param matrix:
    :return: TF-IDF
    """
-   pass
+   numbers_of_documents, count_doc, terms = len(matrix), 0, all_terms(matrix)
+   idf = []
+   for term, doc in zip(terms, matrix):
+      if term in doc:
+         count_doc += 1
+         idf.append((term, math.log(numbers_of_documents / count_doc)))
+   print(idf)
+   return idf
 
 
 def semantic_similarity():
@@ -66,8 +91,12 @@ def semantic_similarity():
 
 if __name__ == "__main__":
    matrix = make_matrix("project2_test.txt")
-   for term in matrix:
-      print(tf(term))  # for  individual document
+   tf_idf(matrix)
+
+
+
+   # for term in matrix:
+   #    print(tf(term))  # for  individual document
 
 
 
