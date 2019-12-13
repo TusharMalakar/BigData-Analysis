@@ -21,8 +21,8 @@ def filter_document(document):
    """
    row = []
    for term in document.split():
-      # if document.split()[0] not in row:
-      #    row.append(document.split()[0])
+      if document.split()[0] not in row:
+         row.append(document.split()[0])
       if term.startswith('gene') and term.endswith('gene') or term.startswith('dis') and term.endswith('dis'):
          row.append(term)
    return row
@@ -48,6 +48,7 @@ def tf(document):
    doc_frequency = counter.most_common(len(document))
    freq_table = []
    for doc in doc_frequency:
+      # pushing as tuple
       freq_table.append((doc[0], doc[1]/len(document)))
    return freq_table
 
@@ -63,6 +64,7 @@ def all_terms(matrix):
       for doc in row:
          if doc not in all_terms:
             all_terms.append(doc)
+   print("terms ", len(all_terms))
    return all_terms
 
 
@@ -80,7 +82,7 @@ def tf_idf(matrix):
          count_doc += 1
          idf.append((term, math.log(numbers_of_documents / count_doc)))
    for i_idf in idf:
-      print(i_idf[1], i_idf[1], i_idf[1])
+      print(i_idf[1])
    return idf
 
 
@@ -93,7 +95,13 @@ def semantic_similarity():
 
 if __name__ == "__main__":
    matrix = make_matrix("project2_test.txt")
-   tf_idf(matrix)
+   print(matrix)
+   with open("bigdata.txt", 'w') as data:
+      for line in matrix:
+         data.write(str(line).strip('[]'))
+         data.write("\n")
+   data.close()
+   # tf_idf(matrix)
    # for term in matrix:
    #    print(tf(term))  # for  individual document
 

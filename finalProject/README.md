@@ -5,11 +5,15 @@
 1. hdfs namenode -formate
 2. start-all.cmd
 3. resource-manager: all map-reduce programs that are executed in the system
-	http://localhost:8088/cluster
+	- http://localhost:8088/cluster
 4. namenode UI:
-	http://localhost:50070/dfshealth.html#tab-overview
-5. copy file to hadoop directory:
-	hadoop fs -mkdir "filename"
+	- http://localhost:50070/dfshealth.html#tab-overview
+5. make directory in hadoop file system:
+	- hadoop fs -mkdir "filename"
+6. show hadoop directory
+    - hadoop fs -ls /
+    - hadoop fs -ls /dir_name
+7. copy file to hadoop 
 
    
 # Implement using cloud platform 100+20
