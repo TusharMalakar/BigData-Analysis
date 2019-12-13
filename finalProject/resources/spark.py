@@ -1,15 +1,34 @@
 from pyspark.sql import SparkSession
 
 
-sparkSession = SparkSession.builder.appName("example-pyspark-read-and-write").getOrCreate()
+sparkSession = SparkSession.builder.appName("bigdataFinal").getOrCreate()
 data = [('First', 1), ('Second', 2), ('Third', 3), ('Fourth', 4), ('Fifth', 5)]
 df = sparkSession.createDataFrame(data)
+hdfs_path = "hdfs://localhost:9000//bigdata/"
 
-"""
-   hdfs://                       - protocol type
-   localhost                     - ip address(may be different for you eg. - 127.56.78.4)
-   54310                         - port number
-   /folder/fileName.txt          - Complete path to the file you want to load.
-"""
-# Write into HDFS
-df.write.csv("hdfs://localhost:9000//bigdata/testfolder/example.csv")
+
+def write_hdfs(file):
+   """
+      hdfs://                       - protocol type
+      localhost                     - ip address(may be different for you eg. - 127.56.78.4)
+      54310                         - port number
+      /folder/fileName.txt          - Complete path to the file you want to load.
+   """
+   print("writing to hdfs....")
+   df.write.csv(hdfs_path+file)
+
+
+
+def hdfs_show(file):
+   """
+   Read from HDFS
+   'hdfs://localhost:9000//bigdata/bigdata.csv'
+   :param file:
+   :return:
+   """
+   df_load = sparkSession.read.csv(hdfs_path+file)
+   df_load.show()
+
+
+if __name__ == "__main__":
+   hdfs_show("bigdata.csv")
