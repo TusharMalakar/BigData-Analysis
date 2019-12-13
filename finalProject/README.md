@@ -16,8 +16,8 @@
 6. show hadoop directory
     - hadoop fs -ls /
     - hadoop fs -ls /dir_name
-7. copy file (bigdata.txt) to hadoop "/bigdata/testfolder"
-    - hadoop fs -put bigdata.txt /bigdata/testfolder/
+7. copy file (bigdata.csv) to hadoop "/bigdata"
+    - hadoop fs -put bigdata.csv /bigdata/
 8. download a file from hahoop to your current directory
     - hadoop fs -get /bigdata/testfolder/bigdata.txt hadoop_data.txt
 9. hadoop display a file 

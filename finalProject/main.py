@@ -103,7 +103,7 @@ if __name__ == "__main__":
    #    print(tf(term))  # for  individual document
 
 
-   # with open("bigdata.txt", 'w') as data:
+   # with open("bigdata.csv", 'w') as data:
    #    for line in matrix:
    #       data.write(str(line).strip('[]'))
    #       data.write("\n")
