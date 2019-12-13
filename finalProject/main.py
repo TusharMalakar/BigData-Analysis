@@ -96,14 +96,20 @@ def semantic_similarity():
 if __name__ == "__main__":
    matrix = make_matrix("project2_test.txt")
    print(matrix)
-   with open("bigdata.txt", 'w') as data:
-      for line in matrix:
-         data.write(str(line).strip('[]'))
-         data.write("\n")
-   data.close()
+
+
    # tf_idf(matrix)
    # for term in matrix:
    #    print(tf(term))  # for  individual document
+
+
+   # with open("bigdata.txt", 'w') as data:
+   #    for line in matrix:
+   #       data.write(str(line).strip('[]'))
+   #       data.write("\n")
+   # data.close()
+
+
 
 
 

@@ -8,12 +8,20 @@
 	- http://localhost:8088/cluster
 4. namenode UI:
 	- http://localhost:50070/dfshealth.html#tab-overview
+	
+	
+# "hadoop fs" to see all cmd 
 5. make directory in hadoop file system:
 	- hadoop fs -mkdir "filename"
 6. show hadoop directory
     - hadoop fs -ls /
     - hadoop fs -ls /dir_name
-7. copy file to hadoop 
+7. copy file (bigdata.txt) to hadoop "/bigdata/testfolder"
+    - hadoop fs -put bigdata.txt /bigdata/testfolder/
+8. download a file from hahoop to your current directory
+    - hadoop fs -get /bigdata/testfolder/bigdata.txt hadoop_data.txt
+9. hadoop display a file 
+    - hadoop fs -cat /bigdata/testfolder/bigdata.txt
 
    
 # Implement using cloud platform 100+20
