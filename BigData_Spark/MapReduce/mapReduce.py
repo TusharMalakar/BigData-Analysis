@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-"""A more advanced Mapper, using Python iterators and generators."""
 import sys
+from itertools import groupby
+from operator import itemgetter
 
 
 def read_input(file):
@@ -9,7 +9,7 @@ def read_input(file):
         yield line.split()
 
 
-def main(separator='\t'):
+def mapper(separator='\t'):
     # input comes from STDIN (standard input)
     data = read_input(sys.stdin)
 
@@ -24,4 +24,4 @@ def main(separator='\t'):
 
 
 if __name__ == "__main__":
-    main()
+    mapper()

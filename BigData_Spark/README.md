@@ -32,6 +32,28 @@
     - insert in hdfs
 - Query from the HDFS get the related doc (document) similarity
     - OUTPUT list of similar doc (document)  
+    
+    
+    
+# run "map reduce in window"
+- type bigdata.csv | python mapper.py | python reducer.py
+- hadoop streaming jar
+    - C:\hadoop\share\hadoop\tools\lib\hadoop-streaming-2.8.0.jar
 
+
+
+# hadoop jar hadoop-streaming-2.2.0.jar  -file C:\hadoop\BigData_Spark\MapReduce\mapper.py -mapper mapper.py -file   C:\\Users\\tusha\\PycharmProjects\\Machine-learning-using-BigData\\BigData_Spark\\MapReduce\\reducer.py -reducer reducer.py -input /bigdata/bigdata -output /bigdata//Wordcount
+
+- https://muhammadbilalyar.github.io/blogs/How-to-Run-Hadoop-wordcount-MapReduce-Example-on-Windows-10/
+- mapreduce client : https://github.com/MuhammadBilalYar/HADOOP-INSTALLATION-ON-WINDOW-10/blob/master/MapReduceClient.jar
+- input_file.txt :  https://github.com/MuhammadBilalYar/HADOOP-INSTALLATION-ON-WINDOW-10/blob/master/input_file.txt
+- hadoop fs -mkdir /input_dir
+- hadoop fs -put C:/input_file.txt /input_dir
+- hadoop fs -ls /input_dir/ 
+- hadoop dfs -cat /input_dir/input_file.txt
+- hadoop jar C:\hadoop\share\hadoop\mapreduce\cli.jar wordcount /input_dir /output_dir
+- hadoop dfsadmin –safemode leave
+- hadoop fs -rm -r /iutput_dir/input_file.txt
+- hadoop fs -rm -r /iutput_dir
 
 
