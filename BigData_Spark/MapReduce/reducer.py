@@ -1,34 +1,21 @@
 #!/usr/bin/env python
-"""A more advanced Reducer, using Python iterators and generators."""
 
-from itertools import groupby
-from operator import itemgetter
 import sys
+import collections
+from MapReduce.mapper import mapper
 
 
-def read_mapper_output(file, separator='\t'):
-    for line in file:
-        yield line.rstrip().split(separator, 1)
-
-
-def main(separator='\t'):
-    # input comes from STDIN (standard input)
-    data = read_mapper_output(sys.stdin, separator=separator)
-    # groupby groups multiple word-count pairs by word,
-    # and creates an iterator that returns consecutive keys and their group:
-    #   current_word - string containing a word (the key)
-    #   group - iterator yielding all ["&lt;current_word&gt;", "&lt;count&gt;"] items
-    list = []
-    for current_word, group in groupby(data, itemgetter(0)):
-        try:
-            total_count = sum(int(count) for current_word, count in group)
-            list.append((current_word, separator, total_count))
-            # print(current_word, separator, total_count)
-        except ValueError:
-            # count was not a number, so silently discard this item
-            pass
-    print(list)
+def reducer():
+    documents = mapper(sys.argv[1])
+    matrix = []
+    for tuplesList in documents:
+        doc_key = []
+        for tr in tuplesList:
+            doc_key.append(tr[0])
+        count = collections.Counter(doc_key)
+        matrix.append(count.most_common(len(doc_key)))
+    return matrix
 
 
 if __name__ == "__main__":
-    main()
+    print(reducer())

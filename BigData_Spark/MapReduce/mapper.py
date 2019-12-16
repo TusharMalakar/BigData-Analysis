@@ -1,27 +1,17 @@
 #!/usr/bin/env python
-"""A more advanced Mapper, using Python iterators and generators."""
-import sys
 
 
-def read_input(file):
+def mapper(file):
+    """
+    Mapper mapping to 2D Matrix
+    :param file:
+    :return: mapped 2D matrix
+    """
+    file = open(file)
+    matrix = []
     for line in file:
-        # split the line into words
-        yield line.split()
-
-
-def main(separator='\t'):
-    # input comes from STDIN (standard input)
-    data = read_input(sys.stdin)
-
-    for words in data:
-        # write the results to STDOUT (standard output);
-        # what we output here will be the input for the
-        # Reduce step, i.e. the input for reducer.py
-        #
-        # tab-delimited; the trivial word count is 1
-        for word in words:
-            print(word, separator, 1)
-
-
-if __name__ == "__main__":
-    main()
+        rows = []
+        for word in line.split():
+            rows.append((word.strip(',').strip('"'), 1))
+        matrix.append(rows)
+    return matrix
