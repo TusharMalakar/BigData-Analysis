@@ -21,8 +21,6 @@ def filter_document(document):
    """
    row = []
    for term in document.split():
-      if document.split()[0] not in row:
-         row.append(document.split()[0])
       if term.startswith('gene') and term.endswith('gene') or term.startswith('dis') and term.endswith('dis'):
          row.append(term)
    return row
@@ -98,13 +96,13 @@ if __name__ == "__main__":
    print(matrix)
 
 
-   # tf_idf(matrix)
-   # for term in matrix:
-   #    print(tf(term))  # for  individual document
+   tf_idf(matrix)
+   for term in matrix:
+      print(tf(term))  # for  individual document
 
 
-   # with open("bigdata.csv", 'w') as data:
-   #    for line in matrix:
-   #       data.write(str(line).strip('[]'))
-   #       data.write("\n")
-   # data.close()
+   with open("bigdata.csv", 'w') as data:
+      for line in matrix:
+         data.write(str(line).strip('[]'))
+         data.write("\n")
+   data.close()
