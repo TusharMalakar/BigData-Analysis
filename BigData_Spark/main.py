@@ -1,41 +1,60 @@
-from pyspark.sql import SparkSession, Row
-from pyspark import conf, SparkContext
+#!/usr/bin/python
+import sys
+import math
+from MapReduce import reducer
 
 
-Spark = SparkSession.builder.master("local").appName("BigData").getOrCreate()
-data_frame = [('First', 1), ('Second', 2), ('Third', 3), ('Fourth', 4), ('Fifth', 5)]
-df = Spark.createDataFrame(data_frame)
-hdfs_path = "hdfs://localhost:9000//bigdata/"
+def all_terms(matrix):
+    """
+    :param matrix:
+    :return: all terms from all documents
+    """
+    all_terms = []
+    for doc in matrix:
+        if doc not in all_terms:
+            all_terms.append(doc[0])
+    return all_terms
 
 
-def write_hdfs(file):
-   """
-      hdfs://                       - protocol type
-      localhost                     - ip address(may be different for you eg. - 127.56.78.4)
-      54310                         - port number
-      /folder/fileName.txt          - Complete path to the file you want to load.
-   """
-   print("writing to hdfs....")
-   df.write.csv(hdfs_path+file)
+def semantic_similarity():
+    """
+    :return:
+    """
+    pass
 
 
+def tf(document):
+    term_sum, matrix = 0, []
+    for term in document:
+        term_sum += term[1]
+    for i in document:
+        matrix.append((i[0], float(i[1])/term_sum))
+    return matrix
 
-def hdfs_show(file):
-   """
-   Read from HDFS
-   'hdfs://localhost:9000//bigdata/bigdata.csv'
-   :param file:
-   :return:
-   """
-   print("Reading file from =>", hdfs_path+file)
-   df_load = Spark.read.csv(hdfs_path+file)
-   df_load.show()
+
+def tf_idf(RDD):
+    """
+    log(number_of_documents / number_of_times_term_exist_in_all_documents)
+    :param matrix:
+    :return: TF-IDF
+    """
+    numbers_of_documents, count_doc, terms = len(RDD), 0, all_terms(RDD)
+    idf = []
+    for term, doc in zip(terms, RDD):
+        if term in doc:
+            count_doc += 1
+        idf.append((term, math.log(float(numbers_of_documents) / count_doc)))
+    return idf
+
+
+def driver():
+    RDD = reducer()
+    RDD1 = RDD.map(tf)
+    RDD2 = RDD1.map(tf_idf)
+    print(RDD2.count())
+    print(RDD2.collect())
+    # RDD2.saveAsTextFile(sys.argv[2])
 
 
 if __name__ == "__main__":
-   hdfs_show("bigdata.csv")
-
-   """
-   Stop the session
-   """
-   Spark.stop()
+    driver()
