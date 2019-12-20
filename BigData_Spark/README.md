@@ -1,3 +1,66 @@
+# Tushar Malakar
+# Class : Big Data 
+
+Project Description:
+====================
+- This Project was built in Google Cloud Platform using google DataProc. DataProc is a hadoop dependend file system.
+
+
+
+Test using Google Cloud DataProc Console 
+========================================
+- To submit a job:
+    - Fist the source file :  MapReduc.py
+    - Fist Argument: Input file
+    - Second Argument : output directory
+    ![submit](https://user-images.githubusercontent.com/35859780/71210538-17923100-227b-11ea-8bf2-51ff34f92387.PNG)
+
+
+check the job status:
+=======================
+![hdfs](https://user-images.githubusercontent.com/35859780/71210535-17923100-227b-11ea-8558-a7801fd65801.PNG)
+
+    
+- I am writing in hadoop file system
+![ls](https://user-images.githubusercontent.com/35859780/71210536-17923100-227b-11ea-920c-678f40caf909.PNG)
+
+- I am writing in Google Cloud Storage Bucket
+![gcpBucket](https://user-images.githubusercontent.com/35859780/71210537-17923100-227b-11ea-9f20-6cc1065bd049.PNG)
+
+
+
+
+
+Query a similarity from hadoop file system via SSH to Cluster:
+=============================================================
+hdfs dfs -cat /home/output/result/part-00001| grep 'gene_egfr_kinase_gene'
+    
+# ======================================================================
+
+- open VM instance SSH
+- ls /usr/lib/hadoop-mapreduce/
+
+
+- hdfs dfs -mkdir /home
+- hdfs dfs -mkdir /home/input
+- hdfs dfs -mkdir /home/output
+- hdfs dfs -ls /home/
+- hdfs dfs -put bigdata.csv /home/input/
+
+
+- mkdir tmp
+- cd tmp
+- cp /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar .
+- cp /usr/lib/hadoop-mapreduce/hadoop-streaming.jar .
+- cp /usr/lib/hadoop-mapreduce/hadoop-streaming-2.9.2.jar .
+- unzip hadoop-mapreduce-examples.jar
+- yarn jar  /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount /home/input/ /home/output/wc1
+- hdfs dfs -get /home/output* ./tmp/.
+
+- gsutil cp MapReduce.py gs://hdspark/sources/
+
+
+# ======================================================================
 # My HADOOP:
    - C:\hadoop\sbin
    - window host: c:\Windows\System32\Drivers\etc\hosts
