@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d8db313-532d-44ac-877b-ec3878cf9578" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lambda_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reSubmit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MapReduce.py" beforeDir="false" afterPath="$PROJECT_DIR$/MapReduce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/spark.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/spark.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +29,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../BlockChianAlgorithm-CryptoCurrency/WhaleWatching" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tusha\PycharmProjects\Machine-learning-using-BigData\BigData_Spark\resources" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tusha\PycharmProjects\Machine-learning-using-BigData\BigData_Spark\MapReduce" />
       <recent name="C:\Users\tusha\PycharmProjects\Machine-learning-using-BigData\BigData_Spark" />

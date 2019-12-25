@@ -1,59 +1,57 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+
 import sys
 import math
-from MapReduce import reducer
+import pyspark
+from collections import Counter
 
 
-def all_terms(matrix):
-    """
-    :param matrix:
-    :return: all terms from all documents
-    """
-    all_terms = []
-    for doc in matrix:
-        if doc not in all_terms:
-            all_terms.append(doc[0])
-    return all_terms
+def filterFile(line):
+    return filter(lambda x: x.startswith('dis') or x.startswith('gene'), line.split())
 
 
-def semantic_similarity():
-    """
-    :return:
-    """
-    pass
+def mapReduce(rdd):
+    count = Counter(rdd.split())
+    doc_frequency = count.most_common(len(rdd))
+    return doc_frequency
 
 
-def tf(document):
-    term_sum, matrix = 0, []
-    for term in document:
-        term_sum += term[1]
-    for i in document:
-        matrix.append((i[0], float(i[1])/term_sum))
-    return matrix
+def tremFrequency(line):
+    length = reduce(lambda x, y: x + y[1], line, 0)
+    return map(lambda (x, y): (x, (float(y)/length)), line)
 
 
-def tf_idf(RDD):
-    """
-    log(number_of_documents / number_of_times_term_exist_in_all_documents)
-    :param matrix:
-    :return: TF-IDF
-    """
-    numbers_of_documents, count_doc, terms = len(RDD), 0, all_terms(RDD)
-    idf = []
-    for term, doc in zip(terms, RDD):
-        if term in doc:
-            count_doc += 1
-        idf.append((term, math.log(float(numbers_of_documents) / count_doc)))
-    return idf
+def multi(x, y):
+    try:
+        return x*y
+    except ValueError:
+        print(None)
 
 
 def driver():
-    RDD = reducer()
-    RDD1 = RDD.map(tf)
-    RDD2 = RDD1.map(tf_idf)
-    print(RDD2.count())
-    print(RDD2.collect())
-    # RDD2.saveAsTextFile(sys.argv[2])
+    if len(sys.argv) != 2:
+        print("Usage: pythonFile, <inputFile>")
+        sys.exit(-1)
+    sc = pyspark.SparkContext()
+    file = sc.textFile(sys.argv[1])
+    reduced = file.map(mapReduce)
+    # print(reduced.collect())
+    tf = reduced.map(tremFrequency)
+    # print(tf.collect())
+
+    # log(number_of_documents / number_of_times_term_exist_in_all_documents)
+    numDoc = tf.count()
+    keys = tf.flatMap(lambda r: r).keys()
+    # print(keys.collect())
+    di = keys.map(lambda word: (word, 1)).reduceByKey(lambda x, y: x + y)
+    # print(di.collect())
+    tempIdf = di.map(lambda (a, b): (a, math.log10(numDoc / float(b))))
+    # print(tempIdf.collect())
+    record = tempIdf.collect()
+    idf = tf.map(lambda x: record)
+    print(idf.collect())
+    # rdd_temp = tf.zip(idf)
+    # print(rdd_temp.collect())
 
 
 if __name__ == "__main__":
