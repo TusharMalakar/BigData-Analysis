@@ -120,3 +120,13 @@ hdfs dfs -cat /home/output/result/part-00001| grep 'gene_egfr_kinase_gene'
 - hadoop fs -rm -r /iutput_dir
 
 
+
+
+# Microsoft sql server studio 
+- sqlcmd -S DESKTOP-DSVBKRV\TUSHAR
+- sp_databases # list all db 
+- Go # execute 
+- use testDB 
+- Go
+- select * from users
+- Go
